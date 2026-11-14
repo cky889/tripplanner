@@ -261,10 +261,10 @@
                     </div>
                     <!-- 3-Photo Google Maps Bento Grid Preview -->
                     <div class="grid grid-cols-3 gap-1 h-24 rounded-xl overflow-hidden border border-slate-200 bg-slate-200">
-                        <img id="spot-modal-preview-img" src="" alt="Preview 1" onerror="handleImgError(this, document.getElementById('spot-input-name').value, 0)" class="col-span-2 w-full h-full object-cover">
+                        <img id="spot-modal-preview-img" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80" alt="Preview 1" onerror="window.handleImgError && handleImgError(this, document.getElementById('spot-input-name').value, 0)" class="col-span-2 w-full h-full object-cover">
                         <div class="grid grid-rows-2 gap-1 h-full">
-                            <img id="spot-modal-preview-img-2" src="" alt="Preview 2" onerror="handleImgError(this, document.getElementById('spot-input-name').value, 1)" class="w-full h-full object-cover">
-                            <img id="spot-modal-preview-img-3" src="" alt="Preview 3" onerror="handleImgError(this, document.getElementById('spot-input-name').value, 2)" class="w-full h-full object-cover">
+                            <img id="spot-modal-preview-img-2" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=400&q=80" alt="Preview 2" onerror="window.handleImgError && handleImgError(this, document.getElementById('spot-input-name').value, 1)" class="w-full h-full object-cover">
+                            <img id="spot-modal-preview-img-3" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80" alt="Preview 3" onerror="window.handleImgError && handleImgError(this, document.getElementById('spot-input-name').value, 2)" class="w-full h-full object-cover">
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
@@ -276,16 +276,21 @@
                     </div>
                 </div>
 
-                <div class="flex items-center justify-end gap-2 pt-2">
-                    <button type="button" onclick="closeSpotModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 text-xs font-semibold">取消</button>
-                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-emerald-800 text-white text-xs font-bold shadow-sm">儲存並按時間排序</button>
+                <div class="flex items-center justify-between gap-2 pt-2">
+                    <button type="button" id="spot-modal-delete-btn" onclick="deleteSpotFromModal()" class="hidden px-3.5 py-2.5 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 text-xs font-bold flex items-center gap-1">
+                        <i class="fa-solid fa-trash"></i> 刪除此景點
+                    </button>
+                    <div class="flex items-center gap-2 ml-auto">
+                        <button type="button" onclick="closeSpotModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 text-xs font-semibold">取消</button>
+                        <button type="submit" class="px-5 py-2.5 rounded-xl bg-emerald-800 text-white text-xs font-bold shadow-sm">儲存並按時間排序</button>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 
     <!-- ==========================================
-         MODAL: EDIT / ADD RESTAURANT (BREAKFAST / LUNCH / DINNER)
+         MODAL: EDIT / ADD RESTAURANT (SINGLE OPTION INSIDE A MEAL BLOCK)
          ========================================== -->
     <div id="meal-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
         <div class="bg-white rounded-t-3xl sm:rounded-2xl max-w-md w-full p-5 shadow-2xl space-y-3.5 max-h-[90vh] overflow-y-auto">
@@ -332,10 +337,10 @@
                         <span id="meal-photo-fetch-status" class="text-[10px] text-emerald-600 font-semibold"></span>
                     </div>
                     <div class="grid grid-cols-3 gap-1 h-24 rounded-xl overflow-hidden border border-slate-200 bg-slate-200">
-                        <img id="meal-modal-preview-img" src="" alt="Food 1" onerror="handleImgError(this, document.getElementById('meal-input-name').value, 0)" class="col-span-2 w-full h-full object-cover">
+                        <img id="meal-modal-preview-img" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=500&q=80" alt="Food 1" onerror="window.handleImgError && handleImgError(this, document.getElementById('meal-input-name').value, 0)" class="col-span-2 w-full h-full object-cover">
                         <div class="grid grid-rows-2 gap-1 h-full">
-                            <img id="meal-modal-preview-img-2" src="" alt="Food 2" onerror="handleImgError(this, document.getElementById('meal-input-name').value, 1)" class="w-full h-full object-cover">
-                            <img id="meal-modal-preview-img-3" src="" alt="Food 3" onerror="handleImgError(this, document.getElementById('meal-input-name').value, 2)" class="w-full h-full object-cover">
+                            <img id="meal-modal-preview-img-2" src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=400&q=80" alt="Food 2" onerror="window.handleImgError && handleImgError(this, document.getElementById('meal-input-name').value, 1)" class="w-full h-full object-cover">
+                            <img id="meal-modal-preview-img-3" src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=400&q=80" alt="Food 3" onerror="window.handleImgError && handleImgError(this, document.getElementById('meal-input-name').value, 2)" class="w-full h-full object-cover">
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
@@ -347,9 +352,88 @@
                     </div>
                 </div>
 
-                <div class="flex items-center justify-end gap-2 pt-2">
-                    <button type="button" onclick="closeMealModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 text-xs font-semibold">取消</button>
-                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-emerald-700 text-white text-xs font-bold shadow-sm">儲存餐廳</button>
+                <div class="flex items-center justify-between gap-2 pt-2">
+                    <button type="button" id="meal-modal-delete-btn" onclick="deleteMealOptionFromModal()" class="hidden px-3.5 py-2.5 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 text-xs font-bold flex items-center gap-1">
+                        <i class="fa-solid fa-trash"></i> 刪除此餐廳
+                    </button>
+                    <div class="flex items-center gap-2 ml-auto">
+                        <button type="button" onclick="closeMealModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 text-xs font-semibold">取消</button>
+                        <button type="submit" class="px-5 py-2.5 rounded-xl bg-emerald-700 text-white text-xs font-bold shadow-sm">儲存餐廳</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         MODAL: ADD / EDIT ENTIRE RESTAURANT x3 BLOCK ON TIMELINE
+         ========================================== -->
+    <div id="meal-block-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div class="bg-white rounded-t-3xl sm:rounded-2xl max-w-md w-full p-5 shadow-2xl space-y-3.5 max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center text-xs">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <h3 id="meal-block-modal-title" class="text-base font-bold text-slate-900">新增餐廳 3選1 時段 (Add Meal x3 Block)</h3>
+                </div>
+                <button onclick="closeMealBlockModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form id="meal-block-form" onsubmit="saveMealBlockModal(event)" class="space-y-3">
+                <input type="hidden" id="meal-block-day-idx">
+                <input type="hidden" id="meal-block-idx">
+
+                <div class="grid grid-cols-3 gap-2">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-600 mb-1">時間 Time</label>
+                        <input type="text" id="meal-block-time" required placeholder="03:30 PM" class="w-full rounded-xl border border-slate-300 px-2.5 py-2 text-xs font-bold">
+                    </div>
+                    <div class="col-span-2">
+                        <label class="block text-[11px] font-bold text-slate-600 mb-1">餐飲時段名稱 Title</label>
+                        <input type="text" id="meal-block-label" required placeholder="🍰 下午茶 Afternoon Tea" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-xs font-bold">
+                    </div>
+                </div>
+
+                <!-- Quick Preset Buttons -->
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="text-[10px] text-slate-400 self-center">快速選擇：</span>
+                    <button type="button" onclick="fillMealBlockPreset('08:00 AM', '🌅 早餐 Breakfast')" class="px-2 py-0.5 rounded-lg bg-amber-50 text-amber-800 border border-amber-200 text-[10px] font-bold">🌅 早餐</button>
+                    <button type="button" onclick="fillMealBlockPreset('12:30 PM', '☀️ 午餐 Lunch')" class="px-2 py-0.5 rounded-lg bg-orange-50 text-orange-800 border border-orange-200 text-[10px] font-bold">☀️ 午餐</button>
+                    <button type="button" onclick="fillMealBlockPreset('03:30 PM', '🍰 下午茶 Tea Time')" class="px-2 py-0.5 rounded-lg bg-pink-50 text-pink-800 border border-pink-200 text-[10px] font-bold">🍰 下午茶</button>
+                    <button type="button" onclick="fillMealBlockPreset('07:00 PM', '🌙 晚餐 Dinner')" class="px-2 py-0.5 rounded-lg bg-indigo-50 text-indigo-800 border border-indigo-200 text-[10px] font-bold">🌙 晚餐</button>
+                    <button type="button" onclick="fillMealBlockPreset('09:45 PM', '串 宵夜 Supper')" class="px-2 py-0.5 rounded-lg bg-violet-50 text-violet-800 border border-violet-200 text-[10px] font-bold">串 宵夜</button>
+                </div>
+
+                <!-- 3 Restaurant Slots (輸入名稱即自動連結 Google Maps 及抓取實景相片) -->
+                <div id="meal-block-options-inputs" class="space-y-2 p-3 rounded-2xl bg-slate-50 border border-slate-200">
+                    <div class="text-[11px] font-extrabold text-slate-700 flex items-center justify-between">
+                        <span>輸入最多 3 間順路餐廳 (輸入店名即自動配對 Google Map 相片)</span>
+                    </div>
+                    <div class="grid grid-cols-5 gap-1.5">
+                        <input type="text" id="mb-opt1-name" required placeholder="餐廳選擇 1 (必填，如 Lune Croissanterie)" class="col-span-3 rounded-xl border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-bold">
+                        <input type="text" id="mb-opt1-tag" placeholder="備註 (如 必食牛角包)" class="col-span-2 rounded-xl border border-slate-300 bg-white px-2.5 py-1.5 text-xs">
+                    </div>
+                    <div class="grid grid-cols-5 gap-1.5">
+                        <input type="text" id="mb-opt2-name" placeholder="餐廳選擇 2 (選填，如 Brunetti Classico)" class="col-span-3 rounded-xl border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-bold">
+                        <input type="text" id="mb-opt2-tag" placeholder="備註 (如 意式甜點)" class="col-span-2 rounded-xl border border-slate-200 bg-white px-2.5 py-1.5 text-xs">
+                    </div>
+                    <div class="grid grid-cols-5 gap-1.5">
+                        <input type="text" id="mb-opt3-name" placeholder="餐廳選擇 3 (選填，如 Patricia Coffee)" class="col-span-3 rounded-xl border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-bold">
+                        <input type="text" id="mb-opt3-tag" placeholder="備註 (如 手沖咖啡)" class="col-span-2 rounded-xl border border-slate-200 bg-white px-2.5 py-1.5 text-xs">
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between gap-2 pt-2">
+                    <button type="button" id="meal-block-delete-btn" onclick="deleteMealBlockFromModal()" class="hidden px-3.5 py-2.5 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 text-xs font-bold flex items-center gap-1">
+                        <i class="fa-solid fa-trash"></i> 刪除此餐廳時段
+                    </button>
+                    <div class="flex items-center gap-2 ml-auto">
+                        <button type="button" onclick="closeMealBlockModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 text-xs font-semibold">取消</button>
+                        <button type="submit" class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold shadow-sm">儲存並排入時間軸</button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -432,10 +516,10 @@
                             <span id="hotel-photo-fetch-status" class="text-[10px] text-violet-700 font-semibold"></span>
                         </div>
                         <div class="grid grid-cols-3 gap-1 h-24 rounded-xl overflow-hidden border border-violet-200 bg-slate-200">
-                            <img id="hotel-preview-img" src="" alt="Hotel 1" onerror="handleImgError(this, 'hotel', 0)" class="col-span-2 w-full h-full object-cover">
+                            <img id="hotel-preview-img" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80" alt="Hotel 1" onerror="window.handleImgError && handleImgError(this, 'hotel', 0)" class="col-span-2 w-full h-full object-cover">
                             <div class="grid grid-rows-2 gap-1 h-full">
-                                <img id="hotel-preview-img-2" src="" alt="Hotel 2" onerror="handleImgError(this, 'hotel', 1)" class="w-full h-full object-cover">
-                                <img id="hotel-preview-img-3" src="" alt="Hotel 3" onerror="handleImgError(this, 'hotel', 2)" class="w-full h-full object-cover">
+                                <img id="hotel-preview-img-2" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=80" alt="Hotel 2" onerror="window.handleImgError && handleImgError(this, 'hotel', 1)" class="w-full h-full object-cover">
+                                <img id="hotel-preview-img-3" src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=400&q=80" alt="Hotel 3" onerror="window.handleImgError && handleImgError(this, 'hotel', 2)" class="w-full h-full object-cover">
                             </div>
                         </div>
                         <div class="flex items-center gap-2">
@@ -1252,10 +1336,50 @@
             }, delay);
         }
 
+        // Ensures each day has a flexible `mealBlocks` array so default Breakfast/Lunch/Dinner
+        // can be freely deleted, edited, or have new 3-option meal blocks added at any time!
+        function ensureMealBlocks(day) {
+            if (!day) return [];
+            if (!Array.isArray(day.mealBlocks)) {
+                const mt = day.mealTimes || { breakfast: '08:00 AM', lunch: '12:30 PM', dinner: '07:00 PM' };
+                const m = day.meals || {};
+                day.mealBlocks = [];
+                if (Array.isArray(m.breakfast) && m.breakfast.length > 0) {
+                    day.mealBlocks.push({
+                        id: 'mb-bf',
+                        time: mt.breakfast || '08:00 AM',
+                        label: '🌅 早餐 Breakfast',
+                        dotColor: 'bg-amber-500',
+                        options: m.breakfast
+                    });
+                }
+                if (Array.isArray(m.lunch) && m.lunch.length > 0) {
+                    day.mealBlocks.push({
+                        id: 'mb-lunch',
+                        time: mt.lunch || '12:30 PM',
+                        label: '☀️ 午餐 Lunch',
+                        dotColor: 'bg-orange-500',
+                        options: m.lunch
+                    });
+                }
+                if (Array.isArray(m.dinner) && m.dinner.length > 0) {
+                    day.mealBlocks.push({
+                        id: 'mb-dinner',
+                        time: mt.dinner || '07:00 PM',
+                        label: '🌙 晚餐 / 宵夜 Dinner & Supper',
+                        dotColor: 'bg-indigo-600',
+                        options: m.dinner
+                    });
+                }
+            }
+            return day.mealBlocks;
+        }
+
         // Hydrates Spots, Restaurants, AND Hotels in the background so every place gets its 3-photo Google Maps preview
         async function hydrateRealPhotosForDay(dayIdx) {
             const day = appState.days[dayIdx];
             if (!day) return;
+            ensureMealBlocks(day);
             let updated = false;
 
             // 1. Hydrate Attractions
@@ -1272,10 +1396,9 @@
                 }
             }
 
-            // 2. Hydrate ALL Restaurants (Breakfast / Lunch / Dinner) when typed or loaded
-            for (const mealType of ['breakfast', 'lunch', 'dinner']) {
-                const list = day.meals?.[mealType] || [];
-                for (const opt of list) {
+            // 2. Hydrate ALL Restaurant Meal Blocks when typed or loaded
+            for (const block of (day.mealBlocks || [])) {
+                for (const opt of (block.options || [])) {
                     if (!opt._wikiChecked && opt.name) {
                         opt._wikiChecked = true;
                         const res = await fetchGoogleMapLinkPreviewOrPlacePhoto(opt.name);
@@ -1872,8 +1995,8 @@
         }
 
         function getChronologicalDayEvents(day) {
+            ensureMealBlocks(day);
             const events = [];
-            const mealTimes = day.mealTimes || { breakfast: '08:00 AM', lunch: '12:30 PM', dinner: '07:00 PM' };
 
             if (day.hotel && day.hotel.checkoutEnabled && day.hotel.checkoutName) {
                 events.push({
@@ -1885,41 +2008,19 @@
                 });
             }
 
-            const bfPick = (day.meals?.breakfast || []).find(m => m.selected) || day.meals?.breakfast?.[0];
-            if (bfPick) {
-                events.push({
-                    type: 'meal',
-                    mealLabel: '早餐 BREAKFAST',
-                    time: mealTimes.breakfast || '08:00 AM',
-                    name: bfPick.name,
-                    desc: bfPick.tag,
-                    mapQuery: bfPick.mapQuery || bfPick.name
-                });
-            }
-
-            const lunchPick = (day.meals?.lunch || []).find(m => m.selected) || day.meals?.lunch?.[0];
-            if (lunchPick) {
-                events.push({
-                    type: 'meal',
-                    mealLabel: '午餐 LUNCH',
-                    time: mealTimes.lunch || '12:30 PM',
-                    name: lunchPick.name,
-                    desc: lunchPick.tag,
-                    mapQuery: lunchPick.mapQuery || lunchPick.name
-                });
-            }
-
-            const dinnerPick = (day.meals?.dinner || []).find(m => m.selected) || day.meals?.dinner?.[0];
-            if (dinnerPick) {
-                events.push({
-                    type: 'meal',
-                    mealLabel: '晚餐 DINNER',
-                    time: mealTimes.dinner || '07:00 PM',
-                    name: dinnerPick.name,
-                    desc: dinnerPick.tag,
-                    mapQuery: dinnerPick.mapQuery || dinnerPick.name
-                });
-            }
+            (day.mealBlocks || []).forEach(block => {
+                const pick = (block.options || []).find(m => m.selected) || block.options?.[0];
+                if (pick) {
+                    events.push({
+                        type: 'meal',
+                        mealLabel: block.label || '餐飲 MEAL',
+                        time: block.time || '12:30 PM',
+                        name: pick.name,
+                        desc: pick.tag || '',
+                        mapQuery: pick.mapQuery || pick.name
+                    });
+                }
+            });
 
             (day.spots || []).forEach(spot => {
                 events.push({
@@ -1981,9 +2082,7 @@
             const day = appState.days[dayIndex];
             const container = document.getElementById('itinerary-content');
 
-            if (!day.mealTimes) {
-                day.mealTimes = { breakfast: '08:00 AM', lunch: '12:30 PM', dinner: '07:00 PM' };
-            }
+            ensureMealBlocks(day);
 
             day.spots.forEach(s => {
                 if (!s.imgUrl || s.imgUrl.includes('1578632767115')) {
@@ -1997,9 +2096,6 @@
 
             const routeUrl = getDayRouteMapsUrl(day);
             const firstStepName = day.spots[0]?.name || '起點';
-            const bfTime = formatScheduleTime(day.mealTimes.breakfast);
-            const lunchTime = formatScheduleTime(day.mealTimes.lunch);
-            const dinnerTime = formatScheduleTime(day.mealTimes.dinner);
 
             container.innerHTML = `
                 <!-- Clean Day Summary Header Card -->
@@ -2012,33 +2108,53 @@
                     <p class="text-xs text-emerald-100 bg-white/10 rounded-xl px-3 py-2 border border-white/10">
                         <i class="fa-solid fa-lightbulb text-amber-300 mr-1"></i>${day.tip}
                     </p>
-                    <div class="grid grid-cols-4 gap-1.5 pt-1">
-                        <a href="${routeUrl}" target="_blank" rel="noopener noreferrer" class="py-2 px-1 rounded-xl bg-white text-slate-900 font-bold text-[11px] whitespace-nowrap flex items-center justify-center gap-1 shadow-sm active:scale-95 transition" title="Starts from Step 1: ${firstStepName}">
+                    <div class="grid grid-cols-5 gap-1.5 pt-1">
+                        <a href="${routeUrl}" target="_blank" rel="noopener noreferrer" class="py-2 px-1 rounded-xl bg-white text-slate-900 font-bold text-[10px] whitespace-nowrap flex items-center justify-center gap-1 shadow-sm active:scale-95 transition" title="Starts from Step 1: ${firstStepName}">
                             <i class="fa-solid fa-route text-emerald-600"></i>
                             <span>全日路線</span>
                         </a>
-                        <button onclick="openSpotModal(${dayIndex}, null)" class="py-2 px-1 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[11px] whitespace-nowrap flex items-center justify-center gap-1 border border-white/20 active:scale-95 transition">
+                        <button type="button" onclick="openSpotModal(${dayIndex}, null)" class="py-2 px-1 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[10px] whitespace-nowrap flex items-center justify-center gap-1 border border-white/20 active:scale-95 transition">
                             <i class="fa-solid fa-plus"></i>
                             <span>加景點</span>
                         </button>
-                        <button onclick="openHotelModal(${dayIndex})" class="py-2 px-1 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold text-[11px] whitespace-nowrap flex items-center justify-center gap-1 border border-white/20 active:scale-95 transition">
+                        <button type="button" onclick="openMealBlockModal(${dayIndex}, null)" class="py-2 px-1 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-[10px] whitespace-nowrap flex items-center justify-center gap-1 border border-white/20 active:scale-95 transition">
+                            <i class="fa-solid fa-utensils"></i>
+                            <span>+餐廳3選1</span>
+                        </button>
+                        <button type="button" onclick="openHotelModal(${dayIndex})" class="py-2 px-1 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold text-[10px] whitespace-nowrap flex items-center justify-center gap-1 border border-white/20 active:scale-95 transition">
                             <i class="fa-solid fa-bed"></i>
                             <span>住宿</span>
                         </button>
-                        <button onclick="openFlightModal(${dayIndex})" class="py-2 px-1 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-[11px] whitespace-nowrap flex items-center justify-center gap-1 border border-white/20 active:scale-95 transition">
+                        <button type="button" onclick="openFlightModal(${dayIndex})" class="py-2 px-1 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-[10px] whitespace-nowrap flex items-center justify-center gap-1 border border-white/20 active:scale-95 transition">
                             <i class="fa-solid fa-plane"></i>
                             <span>加航班</span>
                         </button>
                     </div>
                     <div class="flex items-center justify-between text-[10px] text-emerald-200/90 px-1 pt-0.5">
-                        <span><i class="fa-solid fa-check-double mr-1"></i>路線已連貫：出發住宿 ➔ 景點 & 三餐 ➔ 今晚酒店</span>
-                        <span><i class="fa-solid fa-grip-vertical mr-1"></i>可調動次序</span>
+                        <span><i class="fa-solid fa-trash-can mr-1"></i>所有預設景點、餐廳3選1及住宿均可直接刪除或新增</span>
+                        <span><i class="fa-solid fa-grip-vertical mr-1"></i>可調次序</span>
                     </div>
                 </div>
 
-                <!-- Vertical Schedule Timeline (Sorted Chronologically: Hotel Out + Breakfast + Spots + Lunch + Dinner + Hotel In) -->
+                <!-- Vertical Schedule Timeline (Sorted Chronologically: Hotel Out + Meal Blocks + Spots + Hotel In) -->
                 <div class="relative timeline-line space-y-3.5 mt-4">
                     ${renderChronologicalTimelineItems(dayIndex)}
+                </div>
+
+                <!-- Quick Add Event Bar directly at the bottom of the Timeline -->
+                <div class="bg-white rounded-2xl p-3 border-2 border-dashed border-slate-300 flex flex-wrap items-center justify-between gap-2 mt-3">
+                    <span class="text-xs font-extrabold text-slate-700"><i class="fa-solid fa-circle-plus text-emerald-600 mr-1"></i>直接加入時間軸：</span>
+                    <div class="flex items-center gap-1.5 flex-wrap">
+                        <button type="button" onclick="openSpotModal(${dayIndex}, null)" class="px-3 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold flex items-center gap-1 active:scale-95 transition">
+                            <i class="fa-solid fa-location-dot"></i> + 加景點 Spot
+                        </button>
+                        <button type="button" onclick="openMealBlockModal(${dayIndex}, null)" class="px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 text-xs font-bold flex items-center gap-1 active:scale-95 transition">
+                            <i class="fa-solid fa-utensils"></i> + 加餐廳 3選1
+                        </button>
+                        <button type="button" onclick="openHotelModal(${dayIndex})" class="px-3 py-1.5 rounded-xl bg-violet-50 hover:bg-violet-100 text-violet-800 border border-violet-200 text-xs font-bold flex items-center gap-1 active:scale-95 transition">
+                            <i class="fa-solid fa-bed"></i> + 住宿
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Prev / Next Day Quick Navigation Footer -->
@@ -2053,10 +2169,10 @@
             `;
         }
 
-        // Merges Hotel Departure, Breakfast, Lunch, Dinner, Attractions, and Hotel Check-in in true chronological order
+        // Merges Hotel Departure, all Meal x3 Blocks, Attractions, and Hotel Check-in in true chronological order
         function renderChronologicalTimelineItems(dayIndex) {
             const day = appState.days[dayIndex];
-            const mealTimes = day.mealTimes || { breakfast: '08:00 AM', lunch: '12:30 PM', dinner: '07:00 PM' };
+            ensureMealBlocks(day);
             const items = [];
 
             if (day.hotel && day.hotel.checkoutEnabled && day.hotel.checkoutName) {
@@ -2066,22 +2182,12 @@
                 });
             }
 
-            const bfSched = formatScheduleTime(mealTimes.breakfast);
-            items.push({
-                mins: parseTimeToMinutes(mealTimes.breakfast || '08:00 AM'),
-                html: renderMealTimelineNode(dayIndex, 'breakfast', '🌅 早餐 Breakfast', bfSched.clock, bfSched.ampm, 'bg-amber-500')
-            });
-
-            const lunchSched = formatScheduleTime(mealTimes.lunch);
-            items.push({
-                mins: parseTimeToMinutes(mealTimes.lunch || '12:30 PM'),
-                html: renderMealTimelineNode(dayIndex, 'lunch', '☀️ 午餐 Lunch', lunchSched.clock, lunchSched.ampm, 'bg-orange-500')
-            });
-
-            const dinnerSched = formatScheduleTime(mealTimes.dinner);
-            items.push({
-                mins: parseTimeToMinutes(mealTimes.dinner || '07:00 PM'),
-                html: renderMealTimelineNode(dayIndex, 'dinner', '🌙 晚餐 / 宵夜 Dinner & Supper', dinnerSched.clock, dinnerSched.ampm, 'bg-indigo-600')
+            (day.mealBlocks || []).forEach((block, blockIdx) => {
+                const sched = formatScheduleTime(block.time || '12:30 PM');
+                items.push({
+                    mins: parseTimeToMinutes(block.time || '12:30 PM'),
+                    html: renderMealTimelineNode(dayIndex, blockIdx, block.label, sched.clock, sched.ampm, block.dotColor || 'bg-amber-500')
+                });
             });
 
             day.spots.forEach((spot, spotIdx) => {
@@ -2091,16 +2197,23 @@
                 });
             });
 
-            items.sort((a, b) => a.mins - b.mins);
-            items.push({
-                mins: 99999,
-                html: renderHotelCheckinNode(dayIndex)
-            });
+            if (day.hotel && day.hotel.checkinEnabled && day.hotel.checkinName) {
+                items.push({
+                    mins: parseTimeToMinutes(day.hotel.checkinTime || '09:00 PM'),
+                    html: renderHotelCheckinNode(dayIndex)
+                });
+            } else {
+                items.push({
+                    mins: 99999,
+                    html: renderHotelCheckinNode(dayIndex)
+                });
+            }
 
+            items.sort((a, b) => a.mins - b.mins);
             return items.map(i => i.html).join('');
         }
 
-        // Renders a single Spot node with a 3-Photo Google Maps Bento Preview Grid + Rating Badge
+        // Renders a single Spot node with a 3-Photo Google Maps Bento Preview Grid + Direct Edit & Delete Buttons
         function renderSpotTimelineNode(dayIndex, spot, spotIdx) {
             const day = appState.days[dayIndex];
             const mapLink = getGoogleMapsUrl(spot.mapQuery || spot.name);
@@ -2130,8 +2243,8 @@
                         ${sched.ampm ? `<div class="text-[9px] font-bold text-emerald-700">${sched.ampm}</div>` : ''}
                     </div>
                     <div class="flex items-center gap-1 mt-1">
-                        ${spotIdx > 0 ? `<button onclick="moveSpot(${dayIndex}, ${spotIdx}, -1)" title="Move Up" class="w-5 h-5 rounded bg-white border border-slate-200 text-slate-500 hover:text-emerald-700 flex items-center justify-center text-[9px] shadow-2xs"><i class="fa-solid fa-arrow-up"></i></button>` : ''}
-                        ${spotIdx < day.spots.length - 1 ? `<button onclick="moveSpot(${dayIndex}, ${spotIdx}, 1)" title="Move Down" class="w-5 h-5 rounded bg-white border border-slate-200 text-slate-500 hover:text-emerald-700 flex items-center justify-center text-[9px] shadow-2xs"><i class="fa-solid fa-arrow-down"></i></button>` : ''}
+                        ${spotIdx > 0 ? `<button type="button" onclick="event.stopPropagation(); moveSpot(${dayIndex}, ${spotIdx}, -1)" title="Move Up" class="w-5 h-5 rounded bg-white border border-slate-200 text-slate-500 hover:text-emerald-700 flex items-center justify-center text-[9px] shadow-2xs"><i class="fa-solid fa-arrow-up"></i></button>` : ''}
+                        ${spotIdx < day.spots.length - 1 ? `<button type="button" onclick="event.stopPropagation(); moveSpot(${dayIndex}, ${spotIdx}, 1)" title="Move Down" class="w-5 h-5 rounded bg-white border border-slate-200 text-slate-500 hover:text-emerald-700 flex items-center justify-center text-[9px] shadow-2xs"><i class="fa-solid fa-arrow-down"></i></button>` : ''}
                     </div>
                 </div>
 
@@ -2161,14 +2274,11 @@
                             </a>
                             <p class="text-[11px] text-slate-500 mt-0.5 line-clamp-2">${spot.desc}</p>
                         </div>
-                        <div class="flex items-center gap-0.5 shrink-0">
-                            <span class="cursor-grab active:cursor-grabbing w-6 h-6 rounded-md text-slate-300 hover:text-slate-500 flex items-center justify-center text-xs" title="Drag to reorder">
-                                <i class="fa-solid fa-grip-vertical"></i>
-                            </span>
-                            <button onclick="openSpotModal(${dayIndex}, ${spotIdx})" class="w-6 h-6 rounded-md text-slate-400 hover:text-emerald-700 hover:bg-slate-100 flex items-center justify-center text-xs">
+                        <div class="flex items-center gap-1 shrink-0" onclick="event.stopPropagation()">
+                            <button type="button" onclick="openSpotModal(${dayIndex}, ${spotIdx})" class="w-7 h-7 rounded-lg bg-slate-100 text-slate-600 hover:text-emerald-700 hover:bg-emerald-50 flex items-center justify-center text-xs active:scale-95 transition" title="編輯景點">
                                 <i class="fa-solid fa-pen"></i>
                             </button>
-                            <button onclick="deleteSpot(${dayIndex}, ${spotIdx})" class="w-6 h-6 rounded-md text-slate-300 hover:text-red-500 hover:bg-red-50 flex items-center justify-center text-xs">
+                            <button type="button" onclick="deleteSpot(${dayIndex}, ${spotIdx})" class="w-7 h-7 rounded-lg bg-red-50 text-red-500 hover:text-red-700 hover:bg-red-100 flex items-center justify-center text-xs active:scale-95 transition" title="刪除此景點">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </div>
@@ -2178,7 +2288,7 @@
             `;
         }
 
-        // Renders Morning Departure / Check-out Hotel node on the timeline
+        // Renders Morning Departure / Check-out Hotel node on the timeline (with direct Delete button)
         function renderHotelCheckoutNode(dayIndex) {
             const h = appState.days[dayIndex].hotel;
             if (!h || !h.checkoutEnabled || !h.checkoutName) return '';
@@ -2204,8 +2314,11 @@
                         <a href="${mapLink}" target="_blank" rel="noopener noreferrer" class="px-2 py-1 rounded-lg bg-white text-violet-700 border border-violet-200 text-[10px] font-bold">
                             <i class="fa-solid fa-location-dot text-red-500"></i> Map
                         </a>
-                        <button onclick="openHotelModal(${dayIndex})" class="w-6 h-6 rounded-lg text-violet-500 hover:bg-violet-100 flex items-center justify-center text-xs">
+                        <button type="button" onclick="openHotelModal(${dayIndex})" class="w-7 h-7 rounded-lg bg-white border border-violet-200 text-violet-600 hover:bg-violet-100 flex items-center justify-center text-xs" title="編輯住宿">
                             <i class="fa-solid fa-pen"></i>
+                        </button>
+                        <button type="button" onclick="deleteHotelNode(${dayIndex}, 'checkout')" class="w-7 h-7 rounded-lg bg-red-50 border border-red-200 text-red-500 hover:bg-red-100 flex items-center justify-center text-xs" title="刪除出發住宿">
+                            <i class="fa-solid fa-trash"></i>
                         </button>
                     </div>
                 </div>
@@ -2213,7 +2326,7 @@
             `;
         }
 
-        // Renders Tonight's Hotel Check-in node at the bottom of the timeline
+        // Renders Tonight's Hotel Check-in node on the timeline (with direct Delete button)
         function renderHotelCheckinNode(dayIndex) {
             const h = appState.days[dayIndex].hotel;
             if (!h || !h.checkinEnabled || !h.checkinName) {
@@ -2224,7 +2337,7 @@
                             <i class="fa-solid fa-bed"></i>
                         </div>
                     </div>
-                    <button onclick="openHotelModal(${dayIndex})" class="flex-1 py-2.5 px-3 rounded-2xl border-2 border-dashed border-violet-300 bg-violet-50/40 text-violet-700 text-xs font-bold flex items-center justify-center gap-1.5">
+                    <button type="button" onclick="openHotelModal(${dayIndex})" class="flex-1 py-2.5 px-3 rounded-2xl border-2 border-dashed border-violet-300 bg-violet-50/40 text-violet-700 text-xs font-bold flex items-center justify-center gap-1.5">
                         <i class="fa-solid fa-plus"></i> 新增今晚住宿酒店 (Add Tonight's Hotel)
                     </button>
                 </div>`;
@@ -2274,18 +2387,28 @@
                             </a>
                             <p class="text-[11px] text-slate-500 mt-0.5 line-clamp-2">${h.checkinNote || '點擊編輯入住時間或酒店名稱'}</p>
                         </div>
-                        <button onclick="openHotelModal(${dayIndex})" class="w-6 h-6 rounded-md text-violet-500 hover:bg-violet-100 flex items-center justify-center text-xs shrink-0" title="Edit Hotel">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
+                        <div class="flex items-center gap-1 shrink-0">
+                            <button type="button" onclick="openHotelModal(${dayIndex})" class="w-7 h-7 rounded-lg bg-violet-100 text-violet-700 hover:bg-violet-200 flex items-center justify-center text-xs" title="編輯住宿">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button type="button" onclick="deleteHotelNode(${dayIndex}, 'checkin')" class="w-7 h-7 rounded-lg bg-red-50 text-red-500 hover:bg-red-100 flex items-center justify-center text-xs" title="刪除此住宿">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
             `;
         }
 
-        // Renders an editable Meal Block with Google Maps 3-Photo Bento Preview + Rating Badge
-        function renderMealTimelineNode(dayIndex, mealType, label, clockLabel, ampmLabel, dotColor) {
-            const options = appState.days[dayIndex].meals[mealType] || [];
+        // Renders an editable & deletable Meal x3 Block on the timeline
+        function renderMealTimelineNode(dayIndex, blockIdx, label, clockLabel, ampmLabel, dotColor) {
+            const day = appState.days[dayIndex];
+            ensureMealBlocks(day);
+            const block = day.mealBlocks[blockIdx];
+            if (!block) return '';
+            const options = block.options || [];
+
             return `
             <div class="relative flex items-start gap-2.5">
                 <!-- Left Schedule Time Column for Meal -->
@@ -2299,13 +2422,21 @@
                     </div>
                 </div>
 
-                <!-- Right Meal Card with Google Maps 3-Photo Bento Preview & Edit Controls -->
+                <!-- Right Meal Card with Google Maps 3-Photo Bento Preview & Full Block Edit/Delete Controls -->
                 <div class="flex-1 min-w-0 bg-slate-50/95 rounded-2xl p-2.5 border border-slate-200/90">
-                    <div class="flex items-center justify-between mb-2 px-0.5">
-                        <span class="text-xs font-extrabold text-slate-800">${label}</span>
-                        <button onclick="openMealModal(${dayIndex}, '${mealType}', null)" class="px-2 py-0.5 rounded-lg bg-white border border-slate-200 text-[10px] font-bold text-emerald-700 hover:bg-emerald-50 flex items-center gap-1 shadow-2xs">
-                            <i class="fa-solid fa-plus"></i> 新增餐廳
-                        </button>
+                    <div class="flex items-center justify-between gap-1 mb-2 px-0.5 flex-wrap">
+                        <span class="text-xs font-extrabold text-slate-800 truncate">${label}</span>
+                        <div class="flex items-center gap-1 shrink-0">
+                            <button type="button" onclick="openMealModal(${dayIndex}, ${blockIdx}, null)" class="px-2 py-1 rounded-lg bg-white border border-slate-200 text-[10px] font-bold text-emerald-700 hover:bg-emerald-50 flex items-center gap-1 shadow-2xs active:scale-95">
+                                <i class="fa-solid fa-plus"></i> 加餐廳
+                            </button>
+                            <button type="button" onclick="openMealBlockModal(${dayIndex}, ${blockIdx})" class="w-6 h-6 rounded-lg bg-white border border-slate-200 text-slate-500 hover:text-amber-700 flex items-center justify-center text-[10px] shadow-2xs active:scale-95" title="改時間或標題">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button type="button" onclick="deleteEntireMealBlock(${dayIndex}, ${blockIdx})" class="w-6 h-6 rounded-lg bg-red-50 border border-red-200 text-red-500 hover:bg-red-100 flex items-center justify-center text-[10px] shadow-2xs active:scale-95" title="刪除成個餐飲時段">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="space-y-1.5">
                         ${options.map((opt, optIdx) => {
@@ -2318,7 +2449,7 @@
                             const safeName = opt.name.replace(/'/g, '');
 
                             return `
-                            <div onclick="selectMeal(${dayIndex}, '${mealType}', ${optIdx})" class="cursor-pointer rounded-xl p-1.5 transition flex items-center justify-between gap-2 border ${
+                            <div onclick="selectMeal(${dayIndex}, ${blockIdx}, ${optIdx})" class="cursor-pointer rounded-xl p-1.5 transition flex items-center justify-between gap-2 border ${
                                 opt.selected
                                     ? 'bg-white border-emerald-500 shadow-xs ring-1 ring-emerald-500/30'
                                     : 'bg-white/75 border-slate-200/70 hover:bg-white'
@@ -2352,18 +2483,17 @@
                                     </div>
                                 </div>
 
-                                <!-- Map + Edit + Delete Buttons -->
-                                <div class="flex items-center gap-0.5 shrink-0" onclick="event.stopPropagation()">
+                                <!-- Map + Edit + Delete Buttons (Always visible even on default options!) -->
+                                <div class="flex items-center gap-1 shrink-0" onclick="event.stopPropagation()">
                                     <a href="${mapUrl}" target="_blank" rel="noopener noreferrer" class="px-2 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-800 text-[10px] font-bold flex items-center gap-1">
                                         <i class="fa-solid fa-location-dot text-red-500"></i> Map
                                     </a>
-                                    <button onclick="openMealModal(${dayIndex}, '${mealType}', ${optIdx})" class="w-6 h-6 rounded-lg text-slate-400 hover:text-emerald-700 hover:bg-slate-100 flex items-center justify-center text-[11px]" title="Edit Restaurant">
+                                    <button type="button" onclick="openMealModal(${dayIndex}, ${blockIdx}, ${optIdx})" class="w-6 h-6 rounded-lg bg-slate-100 text-slate-500 hover:text-emerald-700 hover:bg-emerald-50 flex items-center justify-center text-[11px] active:scale-95" title="編輯餐廳">
                                         <i class="fa-solid fa-pen"></i>
                                     </button>
-                                    ${options.length > 1 ? `
-                                    <button onclick="deleteMealOption(${dayIndex}, '${mealType}', ${optIdx})" class="w-6 h-6 rounded-lg text-slate-300 hover:text-red-500 hover:bg-red-50 flex items-center justify-center text-[11px]" title="Delete">
+                                    <button type="button" onclick="deleteMealOption(${dayIndex}, ${blockIdx}, ${optIdx})" class="w-6 h-6 rounded-lg bg-red-50 text-red-500 hover:text-red-700 hover:bg-red-100 flex items-center justify-center text-[11px] active:scale-95" title="刪除此餐廳">
                                         <i class="fa-solid fa-trash"></i>
-                                    </button>` : ''}
+                                    </button>
                                 </div>
                             </div>
                             `;
@@ -2374,12 +2504,16 @@
             `;
         }
 
-        function selectMeal(dayIndex, mealType, optIndex) {
-            appState.days[dayIndex].meals[mealType].forEach((m, i) => {
+        function selectMeal(dayIndex, blockIdx, optIndex) {
+            const day = appState.days[dayIndex];
+            ensureMealBlocks(day);
+            const block = day.mealBlocks[blockIdx];
+            if (!block) return;
+            block.options.forEach((m, i) => {
                 m.selected = (i === optIndex);
             });
             renderTimeline(true);
-            showToast(`已揀選：${appState.days[dayIndex].meals[mealType][optIndex].name}`);
+            showToast(`已揀選：${block.options[optIndex].name}`);
         }
 
         // ============================================================================
@@ -2522,6 +2656,20 @@
             showToast('已更新住宿 & 自動連貫明早出發點！');
         }
 
+        function deleteHotelNode(dayIdx, mode) {
+            const h = appState.days[dayIdx].hotel;
+            if (!h) return;
+            if (mode === 'checkout') {
+                h.checkoutEnabled = false;
+                showToast('已從時間軸移除早上出發住宿');
+            } else {
+                h.checkinEnabled = false;
+                h.checkinName = '';
+                showToast('已從時間軸移除今晚住宿');
+            }
+            renderTimeline(true);
+        }
+
         // ============================================================================
         // SPOT EDIT / ADD MODAL WITH AUTO CHRONOLOGICAL SORTING
         // ============================================================================
@@ -2529,6 +2677,7 @@
             document.getElementById('spot-modal-day-idx').value = dayIdx;
             document.getElementById('spot-modal-spot-idx').value = spotIdx !== null ? spotIdx : '';
             document.getElementById('photo-fetch-status').textContent = '';
+            const delBtn = document.getElementById('spot-modal-delete-btn');
 
             if (spotIdx !== null) {
                 const spot = appState.days[dayIdx].spots[spotIdx];
@@ -2545,6 +2694,7 @@
                 document.getElementById('spot-modal-preview-img-3').src = photos[2];
                 document.getElementById('spot-form').dataset.photosJson = JSON.stringify(photos);
                 document.getElementById('spot-form').dataset.rating = spot.rating || gallery.rating;
+                if (delBtn) delBtn.classList.remove('hidden');
             } else {
                 const defaultGallery = getPlaceGallery('tasmania');
                 document.getElementById('spot-modal-title').textContent = `新增 Day ${dayIdx + 1} 景點`;
@@ -2558,8 +2708,18 @@
                 document.getElementById('spot-modal-preview-img-3').src = defaultGallery.photos[2];
                 document.getElementById('spot-form').dataset.photosJson = JSON.stringify(defaultGallery.photos);
                 document.getElementById('spot-form').dataset.rating = defaultGallery.rating;
+                if (delBtn) delBtn.classList.add('hidden');
             }
             document.getElementById('spot-modal').classList.remove('hidden');
+        }
+
+        function deleteSpotFromModal() {
+            const dayIdx = parseInt(document.getElementById('spot-modal-day-idx').value, 10);
+            const spotIdxRaw = document.getElementById('spot-modal-spot-idx').value;
+            if (spotIdxRaw !== '') {
+                deleteSpot(dayIdx, parseInt(spotIdxRaw, 10));
+            }
+            closeSpotModal();
         }
 
         function autoFillMapAndPhoto() {
@@ -2628,28 +2788,157 @@
         function deleteSpot(dayIdx, spotIdx) {
             appState.days[dayIdx].spots.splice(spotIdx, 1);
             renderTimeline(true);
-            showToast('已刪除景點');
+            showToast('已從時間軸刪除景點');
         }
 
         // ============================================================================
-        // MEAL EDIT / ADD / DELETE MODAL FUNCTIONS
+        // MEAL BLOCK (3選1) & INDIVIDUAL RESTAURANT OPTION MODAL FUNCTIONS
         // ============================================================================
-        function openMealModal(dayIdx, mealType, optIdx) {
-            document.getElementById('meal-modal-day-idx').value = dayIdx;
-            document.getElementById('meal-modal-type').value = mealType;
-            document.getElementById('meal-modal-opt-idx').value = optIdx !== null ? optIdx : '';
-
+        function openMealBlockModal(dayIdx, blockIdx) {
             const day = appState.days[dayIdx];
-            if (!day.mealTimes) day.mealTimes = { breakfast: '08:00 AM', lunch: '12:30 PM', dinner: '07:00 PM' };
-            document.getElementById('meal-input-time').value = day.mealTimes[mealType] || '12:30 PM';
+            ensureMealBlocks(day);
+            document.getElementById('meal-block-day-idx').value = dayIdx;
+            document.getElementById('meal-block-idx').value = blockIdx !== null ? blockIdx : '';
+            const delBtn = document.getElementById('meal-block-delete-btn');
 
-            const mealLabelMap = { breakfast: '早餐 Breakfast', lunch: '午餐 Lunch', dinner: '晚餐/宵夜 Dinner' };
+            if (blockIdx !== null && day.mealBlocks[blockIdx]) {
+                const block = day.mealBlocks[blockIdx];
+                document.getElementById('meal-block-modal-title').textContent = '編輯餐廳 3選1 時段';
+                document.getElementById('meal-block-time').value = block.time || '12:30 PM';
+                document.getElementById('meal-block-label').value = block.label || '☀️ 午餐 Lunch';
+                document.getElementById('mb-opt1-name').value = block.options?.[0]?.name || '';
+                document.getElementById('mb-opt1-tag').value = block.options?.[0]?.tag || '';
+                document.getElementById('mb-opt2-name').value = block.options?.[1]?.name || '';
+                document.getElementById('mb-opt2-tag').value = block.options?.[1]?.tag || '';
+                document.getElementById('mb-opt3-name').value = block.options?.[2]?.name || '';
+                document.getElementById('mb-opt3-tag').value = block.options?.[2]?.tag || '';
+                if (delBtn) delBtn.classList.remove('hidden');
+            } else {
+                document.getElementById('meal-block-modal-title').textContent = `新增 Day ${dayIdx + 1} 餐廳 3選1 時段`;
+                document.getElementById('meal-block-time').value = '03:30 PM';
+                document.getElementById('meal-block-label').value = '🍰 下午茶 Afternoon Tea';
+                document.getElementById('mb-opt1-name').value = '';
+                document.getElementById('mb-opt1-tag').value = '';
+                document.getElementById('mb-opt2-name').value = '';
+                document.getElementById('mb-opt2-tag').value = '';
+                document.getElementById('mb-opt3-name').value = '';
+                document.getElementById('mb-opt3-tag').value = '';
+                if (delBtn) delBtn.classList.add('hidden');
+            }
+            document.getElementById('meal-block-modal').classList.remove('hidden');
+        }
 
-            if (optIdx !== null) {
-                const opt = appState.days[dayIdx].meals[mealType][optIdx];
+        function fillMealBlockPreset(timeStr, labelStr) {
+            document.getElementById('meal-block-time').value = timeStr;
+            document.getElementById('meal-block-label').value = labelStr;
+        }
+
+        function closeMealBlockModal() {
+            document.getElementById('meal-block-modal').classList.add('hidden');
+        }
+
+        function saveMealBlockModal(e) {
+            e.preventDefault();
+            const dayIdx = parseInt(document.getElementById('meal-block-day-idx').value, 10);
+            const blockIdxRaw = document.getElementById('meal-block-idx').value;
+            const day = appState.days[dayIdx];
+            ensureMealBlocks(day);
+
+            const timeVal = document.getElementById('meal-block-time').value.trim() || '03:30 PM';
+            const labelVal = document.getElementById('meal-block-label').value.trim() || '🍽️ 餐飲 Meal';
+            const regionSuffix = dayIdx <= 5 ? ' Tasmania' : ' Melbourne VIC';
+
+            let dotColor = 'bg-amber-500';
+            if (labelVal.includes('午')) dotColor = 'bg-orange-500';
+            else if (labelVal.includes('下午') || labelVal.includes('Tea')) dotColor = 'bg-pink-500';
+            else if (labelVal.includes('晚') || labelVal.includes('宵')) dotColor = 'bg-indigo-600';
+
+            const rawInputs = [
+                { name: document.getElementById('mb-opt1-name').value.trim(), tag: document.getElementById('mb-opt1-tag').value.trim() },
+                { name: document.getElementById('mb-opt2-name').value.trim(), tag: document.getElementById('mb-opt2-tag').value.trim() },
+                { name: document.getElementById('mb-opt3-name').value.trim(), tag: document.getElementById('mb-opt3-tag').value.trim() }
+            ].filter(x => x.name);
+
+            const existingOptions = (blockIdxRaw !== '' && day.mealBlocks[parseInt(blockIdxRaw, 10)])
+                ? day.mealBlocks[parseInt(blockIdxRaw, 10)].options
+                : [];
+
+            const builtOptions = rawInputs.map((inp, idx) => {
+                const prev = existingOptions[idx];
+                if (prev && prev.name === inp.name) {
+                    prev.tag = inp.tag || prev.tag || '順路人氣餐廳';
+                    return prev;
+                }
+                const gallery = getPlaceGallery(inp.name, inp.tag);
+                return {
+                    name: inp.name,
+                    tag: inp.tag || '順路人氣餐廳',
+                    mapQuery: inp.name + regionSuffix,
+                    imgUrl: gallery.photos[0],
+                    photos: gallery.photos,
+                    rating: gallery.rating,
+                    selected: idx === 0,
+                    _wikiChecked: false
+                };
+            });
+
+            if (blockIdxRaw !== '') {
+                const idx = parseInt(blockIdxRaw, 10);
+                day.mealBlocks[idx].time = timeVal;
+                day.mealBlocks[idx].label = labelVal;
+                day.mealBlocks[idx].dotColor = dotColor;
+                if (builtOptions.length > 0) {
+                    day.mealBlocks[idx].options = builtOptions;
+                }
+            } else {
+                day.mealBlocks.push({
+                    id: 'mb-' + Date.now(),
+                    time: timeVal,
+                    label: labelVal,
+                    dotColor: dotColor,
+                    options: builtOptions
+                });
+            }
+
+            closeMealBlockModal();
+            renderTimeline(false);
+            showToast('已儲存餐廳 3選1 時段並自動配對 Google Map 相片！');
+        }
+
+        function deleteEntireMealBlock(dayIdx, blockIdx) {
+            const day = appState.days[dayIdx];
+            ensureMealBlocks(day);
+            const removed = day.mealBlocks.splice(blockIdx, 1);
+            renderTimeline(true);
+            showToast(`已刪除「${removed[0]?.label || '餐飲時段'}」`);
+        }
+
+        function deleteMealBlockFromModal() {
+            const dayIdx = parseInt(document.getElementById('meal-block-day-idx').value, 10);
+            const blockIdxRaw = document.getElementById('meal-block-idx').value;
+            if (blockIdxRaw !== '') {
+                deleteEntireMealBlock(dayIdx, parseInt(blockIdxRaw, 10));
+            }
+            closeMealBlockModal();
+        }
+
+        function openMealModal(dayIdx, blockIdx, optIdx) {
+            const day = appState.days[dayIdx];
+            ensureMealBlocks(day);
+            const block = day.mealBlocks[blockIdx];
+            if (!block) return;
+
+            document.getElementById('meal-modal-day-idx').value = dayIdx;
+            document.getElementById('meal-modal-type').value = blockIdx;
+            document.getElementById('meal-modal-opt-idx').value = optIdx !== null ? optIdx : '';
+            document.getElementById('meal-input-time').value = block.time || '12:30 PM';
+            const delBtn = document.getElementById('meal-modal-delete-btn');
+
+            if (optIdx !== null && block.options[optIdx]) {
+                const opt = block.options[optIdx];
                 const gallery = getPlaceGallery(opt.name, opt.tag);
                 const photos = (Array.isArray(opt.photos) && opt.photos.length >= 3) ? opt.photos : [opt.imgUrl || gallery.photos[0], gallery.photos[1], gallery.photos[2]];
-                document.getElementById('meal-modal-title').textContent = `編輯${mealLabelMap[mealType]}選項`;
+                document.getElementById('meal-modal-title').textContent = `編輯 ${block.label} 餐廳選項`;
                 document.getElementById('meal-input-name').value = opt.name;
                 document.getElementById('meal-input-tag').value = opt.tag;
                 document.getElementById('meal-input-map').value = opt.mapQuery || opt.name;
@@ -2659,9 +2948,10 @@
                 document.getElementById('meal-modal-preview-img-3').src = photos[2];
                 document.getElementById('meal-form').dataset.photosJson = JSON.stringify(photos);
                 document.getElementById('meal-form').dataset.rating = opt.rating || gallery.rating;
+                if (delBtn) delBtn.classList.remove('hidden');
             } else {
                 const defaultGallery = getPlaceGallery('cafe');
-                document.getElementById('meal-modal-title').textContent = `新增${mealLabelMap[mealType]}餐廳`;
+                document.getElementById('meal-modal-title').textContent = `新增 ${block.label} 餐廳`;
                 document.getElementById('meal-input-name').value = '';
                 document.getElementById('meal-input-tag').value = '';
                 document.getElementById('meal-input-map').value = '';
@@ -2671,6 +2961,7 @@
                 document.getElementById('meal-modal-preview-img-3').src = defaultGallery.photos[2];
                 document.getElementById('meal-form').dataset.photosJson = JSON.stringify(defaultGallery.photos);
                 document.getElementById('meal-form').dataset.rating = defaultGallery.rating;
+                if (delBtn) delBtn.classList.add('hidden');
             }
             document.getElementById('meal-modal').classList.remove('hidden');
         }
@@ -2704,7 +2995,7 @@
         function saveMealModal(e) {
             e.preventDefault();
             const dayIdx = parseInt(document.getElementById('meal-modal-day-idx').value, 10);
-            const mealType = document.getElementById('meal-modal-type').value;
+            const blockIdx = parseInt(document.getElementById('meal-modal-type').value, 10);
             const optIdxRaw = document.getElementById('meal-modal-opt-idx').value;
             const nameVal = document.getElementById('meal-input-name').value.trim();
             const tagVal = document.getElementById('meal-input-tag').value.trim();
@@ -2719,14 +3010,16 @@
             const primaryImg = document.getElementById('meal-input-img').value.trim() || savedPhotos[0];
             savedPhotos[0] = primaryImg;
 
-            if (!appState.days[dayIdx].mealTimes) {
-                appState.days[dayIdx].mealTimes = { breakfast: '08:00 AM', lunch: '12:30 PM', dinner: '07:00 PM' };
-            }
+            const day = appState.days[dayIdx];
+            ensureMealBlocks(day);
+            const block = day.mealBlocks[blockIdx];
+            if (!block) return;
+
             if (timeVal) {
-                appState.days[dayIdx].mealTimes[mealType] = timeVal;
+                block.time = timeVal;
             }
 
-            const list = appState.days[dayIdx].meals[mealType];
+            const list = block.options;
             const newObj = {
                 name: nameVal,
                 tag: tagVal || '自選人氣餐廳',
@@ -2751,9 +3044,31 @@
             showToast('已更新餐廳及用餐時間！');
         }
 
-        function deleteMealOption(dayIdx, mealType, optIdx) {
-            const list = appState.days[dayIdx].meals[mealType];
-            if (list.length <= 1) return;
+        function deleteMealOptionFromModal() {
+            const dayIdx = parseInt(document.getElementById('meal-modal-day-idx').value, 10);
+            const blockIdx = parseInt(document.getElementById('meal-modal-type').value, 10);
+            const optIdxRaw = document.getElementById('meal-modal-opt-idx').value;
+            if (optIdxRaw !== '') {
+                deleteMealOption(dayIdx, blockIdx, parseInt(optIdxRaw, 10));
+            }
+            closeMealModal();
+        }
+
+        function deleteMealOption(dayIdx, blockIdx, optIdx) {
+            const day = appState.days[dayIdx];
+            ensureMealBlocks(day);
+            const block = day.mealBlocks[blockIdx];
+            if (!block) return;
+            const list = block.options;
+
+            // If deleting the last remaining restaurant option in a meal block, remove the entire meal block cleanly
+            if (list.length <= 1) {
+                day.mealBlocks.splice(blockIdx, 1);
+                renderTimeline(true);
+                showToast('已刪除此餐飲時段');
+                return;
+            }
+
             const wasSelected = list[optIdx].selected;
             list.splice(optIdx, 1);
             if (wasSelected && list.length > 0) {
